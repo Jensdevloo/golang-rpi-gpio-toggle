@@ -28,5 +28,8 @@ dep:
 build-rpi:
 	env GOOS=linux GOARCH=arm GOARM=5 $(GOBUILD) -o $(BINARY_UNIX) -v
 
+upload-to-pi:
+	scp golang-rpi-gpio-toggle-arm pi@dragonsdenpi.local:~
+
 docker-build:
 	docker run --rm -it -v "$(GOPATH)":/go -w /go/src/bitbucket.org/rsohlich/makepost golang:latest go build -o "$(BINARY_UNIX)" -v
